@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import FormControl from '@material-ui/core/FormControl';
 import Button from '@material-ui/core/Button';
 import SaveIcon from '@material-ui/icons/Save';
+import Moment from 'moment';
 
 
 
@@ -15,7 +16,7 @@ function Form(props) {
 
   function handleNewBlueditForm(event) {
     event.preventDefault();
-    props.newPost({header: _header.value, body: _body.value, votes: _votes.value, id: v4()});
+    props.newPost({header: _header.value, body: _body.value, votes: _votes.value, id: v4(), timePosted: new Moment()});
     _header.value = '';
     _body.value = '';
     props.toggleForm();

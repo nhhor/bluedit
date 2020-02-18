@@ -47,6 +47,7 @@ function Feed(props) {
         key={p.id}
         id={p.id}
         vote={props.vote}
+        timeNow={props.timeNow}
         />))}
   </div>
   );

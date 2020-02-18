@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Moment from 'moment';
 
 function Post(props) {
 
@@ -9,6 +10,7 @@ function Post(props) {
   const voteDown = () => {
     props.vote(props.id, -1);
   }
+  const displayTimePosted = (timePosted) => timePosted.from(props.timeNow, true); 
 
   return (
     <div className="postStyle">
@@ -19,6 +21,8 @@ function Post(props) {
       </div>
       <div className="textStyle">
         <h4 className="h4textStyle">{props.post.header}</h4>
+        <h6 className="h6textStyle">{`${props.post.timePosted}`}</h6>
+        <h6 className="h6textStyle">{`${displayTimePosted(props.post.timePosted)}`}</h6>
         <p>{props.post.body}</p>
       </div>
       <style> {`
