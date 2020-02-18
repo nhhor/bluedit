@@ -11,9 +11,9 @@ const allPosts = [
     id: 0
   },
   {
-    header: 'Post 1 Header',
-    body: 'Asdf asdf asdf asdf asdf dg gdjkslfgjdfgjrfidc fdkgjdfjgdfg fsdf!',
-    votes: 1,
+    header: 'Post 2 Header',
+    body: 'Asdf asdf asdf asdf asdf dg  fdkgjdfjgdfg fsdf!',
+    votes: 5,
     id: 2
   },
 ]
@@ -22,7 +22,7 @@ class App extends React.Component {
   constructor (props) {
     super(props);
     this.state = {
-      posts: allPosts
+      posts: allPosts.sort((a, b) => b.votes - a.votes)
     };
     this.vote = this.vote.bind(this);
     this.newPost = this.newPost.bind(this);
@@ -32,6 +32,7 @@ class App extends React.Component {
     const newPosts = this.state.posts.slice();
     const thisPost = newPosts.find(p => p.id === id);
     thisPost.votes += modifier;
+    newPosts.sort((a, b) => b.votes - a.votes);
     this.setState({posts: newPosts});
   }
 
@@ -43,7 +44,8 @@ class App extends React.Component {
       votes: parseInt(input.votes),
       id: input.id
     };
-    newPosts.unshift(post);
+    newPosts.push(post);
+    newPosts.sort((a, b) => b.votes - a.votes);
     this.setState({posts: newPosts});
   }
 
