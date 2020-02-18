@@ -11,16 +11,44 @@ function Post(props) {
   }
 
   return (
-    <div>
-      <h4>{props.post.header}</h4>
-      <p>{props.post.body}</p>
-      <div>
-        <button onClick={voteUp}></button>
+    <div className="postStyle">
+      <div className="voteClass">
+        <button onClick={voteUp}>+</button>
         <p>{props.post.votes}</p>
-        <button onClick={voteDown}></button>
+        <button onClick={voteDown}>-</button>
       </div>
-    </div>
-  );
-}
+      <div className="textStyle">
+        <h4 className="h4textStyle">{props.post.header}</h4>
+        <p>{props.post.body}</p>
+      </div>
+      <style> {`
+          .postStyle {
+            background-color: #eee;
 
-export default Post;
+            margin: 20px;
+            padding: 20px 3%;
+            border-radius: 50px;
+            background: rgb(238,238,238);
+            background: linear-gradient(90deg, rgba(238,238,238,1) 0%, rgba(238,238,238,1) 8.4%, rgba(204,204,204,1) 8.5%, rgba(204,204,204,1) 100%);
+            display: grid;
+            grid-template-columns: 5% 1fr;
+          }
+
+          .voteClass {
+            text-align: center;
+          }
+
+          .textStyle {
+            padding-left: 20px;
+          }
+
+          .h4textStyle {
+            margin-top: 3px;
+          }
+          `}
+        </style>
+      </div>
+    );
+  }
+
+  export default Post;

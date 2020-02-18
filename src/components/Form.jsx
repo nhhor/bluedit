@@ -15,48 +15,53 @@ function Form(props) {
 
   function handleNewBlueditForm(event) {
     event.preventDefault();
-    console.log(_votes.value);
     props.newPost({header: _header.value, body: _body.value, votes: _votes.value, id: v4()});
     _header.value = '';
     _body.value = '';
     props.toggleForm();
   }
 
+  const inputStyle = {
+    marginBottom: '20px'
+  };
+
 
   return (
     <div className='form'>
-      <h1>Form</h1>
+      <h2>New Post</h2>
 
       <form onSubmit={handleNewBlueditForm}>
-        <FormControl fullWidth>
-        <TextField
-          variant="outlined"
-          type='text'
-          id='header'
-          placeholder='header'
-          ref={(input) => {_header = input;}}/>
-        <TextField
-          variant="outlined"
-          type='text'
-          id='body'
-          placeholder='body'
-          ref={(input) => {_body = input;}}/>
-        <TextField
-          variant="outlined"
-          type='hidden'
-          id='votes'
-          value='1'
-          ref={(input) => {_votes = input;}}/>
+        <FormControl fullWidth style={inputStyle}>
+          <TextField
+            variant="outlined"
+            type='text'
+            id='header'
+            placeholder='header'
+            required
+            inputRef={(input) => {_header = input;}}/>
+          <TextField
+            variant="outlined"
+            type='text'
+            id='body'
+            required
+            placeholder='body'
+            inputRef={(input) => {_body = input;}}/>
+          <TextField
+            variant="outlined"
+            type='hidden'
+            id='votes'
+            value='1'
+            inputRef={(input) => {_votes = input;}}/>
           <Button
-          type='submit'
-          variant="contained"
-          color="primary"
-          size="small"
-          startIcon={<SaveIcon />}
-        >
-          Save
-        </Button>
-      </FormControl>
+            type='submit'
+            variant="contained"
+            color="primary"
+            size="small"
+            startIcon={<SaveIcon />}
+            >
+            Save
+          </Button>
+        </FormControl>
       </form>
 
 
@@ -73,6 +78,7 @@ function Form(props) {
             box-shadow: 5px 5px 5px rgba(50, 50, 50, .75);
 
           }
+
 
           `} </style>
       </div>
